@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 
@@ -10,7 +11,7 @@ export function RegistrationView(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password, email, birthday);
-        props.onRegistration(username);
+        props.onRegistration(false);
     };
 
     return (
