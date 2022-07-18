@@ -25441,7 +25441,7 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     onRegistration(registered) {
-        this.state({
+        this.setState({
             registered
         });
     }
