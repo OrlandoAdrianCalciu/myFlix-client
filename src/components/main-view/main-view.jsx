@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { RegistrationView } from '../registration-view/registration-view';
 
 export class MainView extends React.Component {
 
@@ -13,7 +13,8 @@ export class MainView extends React.Component {
         this.state = {
             movies: [ ],
             selectedMovie: null,
-            user: null
+            user: null,
+            registered: null
         };
     }
 
@@ -31,19 +32,19 @@ export class MainView extends React.Component {
 
     setSelectedMovie(movie){
         this.setState({
-            selectedMovie: movie
+            selectedMovie: movie,
         });
     }
 
     onLoggedIn(user) {
       this.setState({
-        user
+        user,
       });
     }
 
     onRegistration(registered) {
       this.setState({
-        registered
+        registered,
       });
     }
 
