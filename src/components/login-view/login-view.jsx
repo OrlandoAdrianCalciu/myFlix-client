@@ -24,12 +24,12 @@ export function LoginView(props){
         <Form>
             <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                <Form.Control type="text" onChange={e => setUsername(e.target.value)} required/>
             </Form.Group>
 
             <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                <Form.Control type="password" onChange={e => setPassword(e.target.value)} required/>
             </Form.Group>
             <Button variant="primary" type="submit" onClick={handleSubmit}>
                 Submit
