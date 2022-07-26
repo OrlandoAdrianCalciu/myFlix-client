@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { Row, Col } from 'react-bootstrap';
+
+import { Row, Col, Button } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
@@ -34,7 +37,7 @@ export class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
-        //Assign the result to the state
+        // Assign the result to the state
         this.setState({
           movies: response.data
         });
@@ -44,11 +47,11 @@ export class MainView extends React.Component {
       });
   }
 
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie,
-    });
-  }
+  // setSelectedMovie(movie) {
+  //   this.setState({
+  //     selectedMovie: movie,
+  //   });
+  // }
 
   onLoggedIn(authData) {
     console.log(authData);
@@ -88,41 +91,70 @@ export class MainView extends React.Component {
       );
     }
 
-    if (!user) {
-      return (
-        <LoginView
-          onLoggedIn={(user) => this.onLoggedIn(user)}
-          onRegistration={(register) => this.onRegistration(register)}
-        />
-      );
-    }
+    if (!user) return <Row>
+      <Col>
+        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+      </Col>
+    </Row>
+    //   return (
+    //     <LoginView
+    //       onLoggedIn={(user) => this.onLoggedIn(user)}
+    //       onRegistration={(register) => this.onRegistration(register)}
+    //     />
+    //   );
+    // }
 
 
     if (movies.length === 0) return <div className="main-view" />;
 
 
     return (
-      <div className="main-view">
-        <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
-        {selectedMovie
-          ? (
-            <Row className="justify-content-md-center">
-              <Col md={8}>
-                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+      <Router>
+        <Row className='main-view justify-content-md-center'>
+          <Route exact path="/" render={() => {
+            return movies.map(m => (
+              <Col md={3} key={m._id}>
+                <MovieCard movie={m} />
               </Col>
-            </Row>
-          )
-          : (
-            <Row className="justify-content-md-center">
-              {movies.map(movie => (
-                <Col md={3}>
-                  <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-                </Col>
-              ))}
-            </Row>
-          )
-        }
-      </div>
+            ))
+          }} />
+          <Route exact path="/movies/:movieId" render={({ match }) => {
+            return <Col md={8}>
+              <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
+            </Col>
+          }} />
+          <Route exact path="/genres/:name" render={/* genre view*/} />
+          <Route exact path="/directors/:name" render={({ match }) => {
+            if (movies.length === 0) return <div className="main-view" />;
+            return <Col md={8}>
+              <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+            </Col>
+          }
+          } />
+
+        </Row>
+      </Router>
+      // <div className="main-view">
+      //   <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
+      //   {selectedMovie
+      //     ? (
+      //       <Row className="justify-content-md-center">
+      //         <Col md={8}>
+      //           <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+      //         </Col>
+      //       </Row>
+      //     )
+      //     : (
+      //       <Row className="justify-content-md-center">
+      //         {movies.map(movie => (
+      //           <Col md={3}>
+      //             <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+      //           </Col>
+      //         ))}
+      //       </Row>
+      //     )
+      //   }
+      // </div>
     );
   }
 }
