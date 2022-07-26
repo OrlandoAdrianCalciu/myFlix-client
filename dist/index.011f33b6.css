@@ -1,0 +1,50 @@
+.container-style {
+  padding-top: 50px;
+}
+.login-form__style {
+  margin: 20px;
+}
+.card-style {
+  margin: 20px;
+}
+
+.image-style {
+  width: 286px;
+  height: 400px;
+}
+
+.button-style {
+  margin-left: 180px;
+}
+.add-list__button {
+  margin-left: 10px;
+}
+
+.movie-view__card {
+  margin: 20px;
+}
+.navbar-container {
+  background-color: white;
+}
+
+.navbar-elements__style {
+  background-color: white;
+}
+.directorCard {
+  margin: 30px;
+}
+
+.directorTitle {
+  color: black;
+}
+.genreCard {
+  margin: 30px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Playfair Display", serif;
+  background-color: #1A1E23;
+  color: #FFFFFF;
+}
+/*# sourceMappingURL=index.011f33b6.css.map */
