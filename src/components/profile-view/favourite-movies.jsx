@@ -4,7 +4,7 @@ import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import './profile-view.scss';
 
-function FavoriteMovies({ favoriteMovieList }) {
+function FavouriteMovies({ favouriteMovieList }) {
     const removeFav = (id) => {
         let token = localStorage.getItem('token');
         let url = `https://top-movies-api.herokuapp.com/users/${localStorage.getItem('user')}/movies/${id}`;
@@ -23,7 +23,7 @@ function FavoriteMovies({ favoriteMovieList }) {
                 </Row>
 
                 <Row>
-                    {favoriteMovieList.map((ImagePath, Title, _id) => {
+                    {favouriteMovieList.map((ImagePath, Title, _id) => {
                         return (
                             <Col xs={12} md={6} lg={4} key={_id} className="fav-movie">
                                 <Figure>
@@ -48,4 +48,4 @@ function FavoriteMovies({ favoriteMovieList }) {
     )
 }
 
-export default FavoriteMovies
+export default FavouriteMovies
