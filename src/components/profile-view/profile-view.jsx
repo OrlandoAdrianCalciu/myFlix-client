@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 import './profile-view.scss';
 import UserInfo from './user-info';
-import FavoriteMovies from "./favorite-movies";
+import FavouriteMovies from "./favourite-movies";
 import UpdateUser from "./update-user";
 
 export function ProfileView({ movies, onUpdatedUserInfo }) {
     const [user, setUser] = useState(props.user);
     const [movies, setMovies] = useState(props.movies);
-    const [favoriteMovies, setFavouriteMovies] = useState([]);
+    const [favouriteMovies, setFavouriteMovies] = useState([]);
     const currentUser = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
