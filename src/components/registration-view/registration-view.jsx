@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import PropTypes from 'prop-types';
 import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
 
@@ -7,11 +8,61 @@ export function RegistrationView(props) {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
+    //Declare hook for each input
+    const [usernameErr, setUsernameErr] = useState('');
+    const [passwordErr, setPasswordErr] = useState('');
+    const [emailErr, setEmailErr] = useState('');
+    const [birthdayErr, setBirthdayErr] = useState('');
 
+    //Validate user inputs
+    const validate = () => {
+        let isReq = true;
+        if (!username){
+            setUsernameErr('Username Required');
+            isReq = false;
+        }else if(username.length < 5){
+            setUsernameErr('Username must be 5 characters long');
+            isReq=false;
+        }
+        if(!password){
+            setPasswordErr('Password Required');
+            isReq = false;
+        }else if(password.length < 6){
+            setPasswordErr('Password must be 6 characters long');
+            isReq = false;
+        }
+        if (!email){
+            setEmailErr('Email Required');
+            isReq = false;
+        } else if(email.indexOf("@") === -1){
+            setEmailErr("You must enter a valid email adress");
+            isReq = false;
+        }
+
+        return isReq;
+    }
+
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password, email, birthday);
-        props.onRegistration(false);
+        const isReq = validate();
+        if (isReq) {
+            axios.post('https://top-movies-api.herokuapp.com/users', {
+                Username: username,
+                Password: password,
+                Email: email,
+                Birthday: birthday
+            })
+            .then(response => {
+                const data = response.data;
+                console.log(data);
+                alert("Thanks for signing up. Welcome to my movie website!");
+                window.open('/', '_self');
+            })
+            .catch(e => {
+                console.log('error registering the user')
+            });
+        }
     };
 
     return (
@@ -41,7 +92,7 @@ export function RegistrationView(props) {
                                 onChange={e => setPassword(e.target.value)}
                                 required
                                 minLength={8}
-                                placeholder="Your password must be 8 or more characters"
+                                placeholder="Your password must be 6 or more characters"
                             ></Form.Control>
                         </Form.Group>
                         <Form.Group>
@@ -96,7 +147,3 @@ export function RegistrationView(props) {
         // </form>
     );
 }
-
-RegistrationView.propTypes = {
-    onRegistration: PropTypes.func.isRequired,
-};
