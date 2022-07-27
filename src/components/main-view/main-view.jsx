@@ -7,8 +7,9 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { NavbarView }  from '../navbar-view/navbar-view';
 
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Container, Button, Navbar, Nav } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
@@ -16,9 +17,7 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null,
       user: null,
-      registered: null
     };
   }
 
@@ -64,11 +63,11 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onRegistration(registered) {
-    this.setState({
-      registered,
-    });
-  }
+  // onRegistration(registered) {
+  //   this.setState({
+  //     registered,
+  //   });
+  // }
 
   onLoggedOut() {
     localStorage.removeItem('token');
@@ -80,22 +79,22 @@ export class MainView extends React.Component {
 
 
   render() {
-    const { movies, selectedMovie, user, registered } = this.state;
+    const { movies, user } = this.state;
 
 
-    if (registered) {
-      return (
-        <RegistrationView
-          onRegistration={(register) => this.onRegistration(register)}
-        />
-      );
-    }
+    // if (registered) {
+    //   return (
+    //     <RegistrationView
+    //       onRegistration={(register) => this.onRegistration(register)}
+    //     />
+    //   );
+    // }
 
-    if (!user) return <Row>
-      <Col>
-        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-      </Col>
-    </Row>
+    // if (!user) return <Row>
+    //   <Col>
+    //     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+    //   </Col>
+    // </Row>
     //   return (
     //     <LoginView
     //       onLoggedIn={(user) => this.onLoggedIn(user)}
@@ -105,20 +104,33 @@ export class MainView extends React.Component {
     // }
 
 
-    if (movies.length === 0) return <div className="main-view" />;
+    // if (movies.length === 0) return <div className="main-view" />;
 
 
+    
     return (
       <Router>
+        <NavbarView user={user} />
+        <Container>
         <Row className='main-view justify-content-md-center'>
           <Route exact path="/" render={() => {
+            if (!user) return <Col>
+            <LoginView movies={movies} onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+            if (movies.length === 0) return <div className='main-view' />; 
             return movies.map(m => (
               <Col md={3} key={m._id}>
                 <MovieCard movie={m} />
               </Col>
             ))
           }} />
-          <Route exact path="/movies/:movieId" render={({ match, history }) => {
+          <Route path="/register" render={() => {
+            if(user) return <Redirect to="/"/>
+            return <Col lg={8} md={8}>
+            <RegistrationView />
+            </Col>
+          }} />
+          <Route path="/movies/:movieId" render={({ match, history }) => {
             return <Col md={8}>
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
             </Col>
@@ -134,10 +146,22 @@ export class MainView extends React.Component {
             return <Col md={8}>
               <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
             </Col>
-          }
-          } />
+          }} />
+          <Route path={`/users/${user}`} render={({match, history}) => {
+            if(!user) return <Redirect to="/" />
+            return <Col>
+            <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
+            </Col>
+          }} />
+          <Route path={`/user-update/${user}`} render={({match, history}) => {
+            if (!user) return <Redirect to="/" />
+            return <Col>
+            <UserUpdate user={user} onBackClick={() => history.goBack()}/>
+            </Col>
+          }} />
 
         </Row>
+        </Container>
       </Router>
       // <div className="main-view">
       //   <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
@@ -163,3 +187,5 @@ export class MainView extends React.Component {
     );
   }
 }
+
+export default MainView;
