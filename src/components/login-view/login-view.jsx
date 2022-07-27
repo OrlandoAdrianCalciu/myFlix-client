@@ -52,10 +52,10 @@ export function LoginView(props) {
       }
     };
 
-    const handleRegister = (e) => {
-        e.preventDefault()
-        props.onRegistration(true)
-    }
+    // const handleRegister = (e) => {
+    //     e.preventDefault()
+    //     props.onRegistration(true)
+    // }
 
     return (
         <Form>
@@ -72,13 +72,13 @@ export function LoginView(props) {
                 {/*code added here to display validation error*/}
                 {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
+            <Button variant="secondary" type="submit" onClick={handleSubmit}>
                 Submit
             </Button>
-            <Form.Text>Not signed up yet?</Form.Text>
-            <Button variant="primary" type="submit" onClick={handleRegister}>
+            {/* <Form.Text>Not signed up yet?</Form.Text> */}
+            {/* <Button variant="primary" type="submit" onClick={handleRegister}>
                 Register
-            </Button>
+            </Button> */}
         </Form>
         // <form>
         //     <label>
