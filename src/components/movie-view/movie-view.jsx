@@ -1,25 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import { Button, Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
 
-  keypressCallback(event){
-    console.log(event.key);
+  addMovie(movie, user) {
+    let username = localStorage.getItem("user");
+    let token = localStorage.getItem("token");
+    console.log(movie);
+    console.log(token);
+
+    axios
+      .post(
+        `https://top-movies-api.herokuapp.com/users/${username}/movies/${movie._id}`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response.data);
+        alert(`${movie.Title} has been added to your list.`);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-  componentDidMount(){
-    document.addEventListener('keypress', this.keypressCallback);
-  }
+  delMovie = (movie, user) => {
+    let token = localStorage.getItem("token");
+    let username = localStorage.getItem("user");
+    console.log(movie);
+    console.log(token);
+    axios
+      .delete(
+        `https://top-movies-api.herokuapp.com/users/${username}/movies/${movie._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        alert(`${movie.Title} has been removed from your list.`);
+      })
+      .catch((e) => {
+        console.log("Error");
+      });
+  };
 
-  componentWillUnmount(){
-    document.removeEventListener('keypress', this.keypressCallback);
-  }
 
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, user, onBackClick } = this.props;
 
     return (
       <Container>
@@ -45,6 +77,12 @@ export class MovieView extends React.Component {
               </Card.Text>
 
               <Button variant='outline-danger' onClick={() => { onBackClick() }}>Back</Button>
+              <Button className="button ml-2" onClick={() => { this.addMovie(movie, user);}}>
+          Add to favourites
+        </Button>
+        <Button className="button ml-2" onClick={() => { this.delMovie(movie, user);}}>
+          Delete from favourites
+        </Button>
 
             </Card.Body>
           </Card>
