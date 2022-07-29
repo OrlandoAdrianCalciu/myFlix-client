@@ -5,82 +5,78 @@ import PropTypes from 'prop-types';
 import { Form, Button, Card, Container, Row, Col } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
+import { MovieCard } from '../movie-card/movie-card'
 
 import './profile-view.scss';
 
-export function ProfileView(props) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [favouriteMovies, setFavouriteMovies] = useState({});
-    const [email, setEmail] = useState('');
-    const [birthday, setBirthday] = useState('');
+export function ProfileView({ movies }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [favouriteMovies, setFavouriteMovies] = useState([]);
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
 
-    const [user, setUser] = useState('');
-    const [movies, setMovies] = useState([]);
-    const currentUser = localStorage.getItem('user');
+  const [user, setUser] = useState('');
+  // const [movies, setMovies] = useState([]);
+  const currentUser = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
+  const [favouriteMoviesList, setFavouriteMoviesList] = useState([]);
+
+  const getUser = () => {
+    let user = localStorage.getItem('user');
+    let token = localStorage.getItem('token');
+    axios.get(`https://top-movies-api.herokuapp.com/users/${currentUser}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        setUsername(response.data.Username);
+        setEmail(response.data.Email);
+        // setFavouriteMovies(response.data.FavouriteMovies);
+        console.log(response);
+
+      }) 
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
+  const handleDelete = () => {
+    const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    const [favouriteMoviesList, setFavouriteMoviesList] = useState([]);
+    axios.delete(`https://top-movies-api.herokuapp.com/users/${currentUser}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(() => {
+        alert(`The account ${user.Username} was successfully deleted.`)
+        localStorage.clear();
+        window.open('/register', '_self');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-    const getUser = () => {
-      let user = localStorage.getItem('user');
-      let token = localStorage.getItem('token');
-        axios.get(`https://top-movies-api.herokuapp.com/users/${currentUser}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-            .then((response) => {
-              setUsername(response.data.Username);
-              setEmail(response.data.Email);
-              setUser(response.data);
-              setFavouriteMovies(response.data.FavouriteMovies);
-              console.log(response);
-
-              response.data.favouriteMovie.forEach((movies_id) => {
-                let favMovies = props.movies.filter((movie) => movie._id === movies_id);
-                setMovies(favMovies);
-              });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
-
-    useEffect(() => {
-        getUser();
-    }, [])
-
-    const handleDelete = () => {
-      const user = localStorage.getItem('user');
-      const token = localStorage.getItem('token');
-        axios.delete(`https://top-movies-api.herokuapp.com/users/${currentUser}`, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-            .then(() => {
-                alert(`The account ${user.Username} was successfully deleted.`)
-                localStorage.clear();
-                window.open('/register', '_self');
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
-
-    const handleUpdate = () => {
-      let user = localStorage.getItem('user');
-      let token = localStorage.getItem('token');
-      axios.put(`https://top-movies-api.herokuapp.com/users/${currentUser}`, {
-        Username: username,
-        Password: password,
-        Email: email,
-        Birthday: birthday,
-      },
+  const handleUpdate = () => {
+    let user = localStorage.getItem('user');
+    let token = localStorage.getItem('token');
+    axios.put(`https://top-movies-api.herokuapp.com/users/${currentUser}`, {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
+    },
       {
-        headers: { Authorization: `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
       }
-      )
+    )
       .then((response) => {
         alert('Your profile has been updated');
         localStorage.setItem('user', response.data.Username),
-        console.log(response.data);
+          console.log(response.data);
         windows.open('/', '_self');
       })
       .catch((error) => {
@@ -88,8 +84,28 @@ export function ProfileView(props) {
       });
   }
 
-    return (
-      <Container>
+  const renderFavourits = () => {
+    console.log(movies)
+    if (movies.length + 0) {
+
+      return (
+        <Row className="justify-content-md-center">
+
+          {favouriteMovies.length === 0 ? (<h5>Add some movies to your list</h5>) : (
+            favouriteMovies.map((movieId, i) => (
+              <Col md={6} lg={4}>
+                <MovieCard key={`${i}-${movieId}`} movie={movies.find(m => m._id == movieId)} />
+              </Col>
+            ))
+          )}
+
+        </Row>
+      )
+    }
+  }
+
+  return (
+    <Container>
       <Row>
         <h3>Profile</h3>
       </Row>
@@ -140,7 +156,8 @@ export function ProfileView(props) {
       <h4>Favourite movies:</h4>
       <Card className="fav-list">
         <Card.Body>
-          {favouriteMoviesList.map((movie) => {
+          {renderFavourits()}
+          {/* {favouriteMoviesList.map((movie) => {
             return (
               <div key={movie._id}>
                 <img src={movie.ImagePath} alt={movie.Title} />
@@ -149,11 +166,14 @@ export function ProfileView(props) {
                 </Link>
               </div>
             );
-          })}
+          })} */}
         </Card.Body>
       </Card>
+
+
+
     </Container>
-    );
+  );
 }
 
 ProfileView.propTypes = {
