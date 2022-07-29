@@ -52,10 +52,6 @@ export function LoginView(props) {
       }
     };
 
-    // const handleRegister = (e) => {
-    //     e.preventDefault()
-    //     props.onRegistration(true)
-    // }
 
     return (
         <Form>
@@ -75,24 +71,8 @@ export function LoginView(props) {
             <Button variant="secondary" type="submit" onClick={handleSubmit}>
                 Submit
             </Button>
-            {/* <Form.Text>Not signed up yet?</Form.Text> */}
-            {/* <Button variant="primary" type="submit" onClick={handleRegister}>
-                Register
-            </Button> */}
         </Form>
-        // <form>
-        //     <label>
-        //         Username:
-        //         <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        //     </label>
-        //     <label>
-        //         Password:
-        //         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        //     </label>
-        //     <button type="submit" onClick={handleSubmit}>Submit</button>
-        //     <p>Not signed up yet ?</p>
-        //     <button type="submit" onClick={handleRegister}>Register</button>
-        // </form>
+        
     );
 }
 
