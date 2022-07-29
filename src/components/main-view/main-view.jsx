@@ -49,11 +49,6 @@ export class MainView extends React.Component {
       });
   }
 
-  // setSelectedMovie(movie) {
-  //   this.setState({
-  //     selectedMovie: movie,
-  //   });
-  // }
 
   onLoggedIn(authData) {
     console.log(authData);
@@ -66,11 +61,6 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  // onRegistration(registered) {
-  //   this.setState({
-  //     registered,
-  //   });
-  // }
 
   onLoggedOut() {
     localStorage.removeItem('token');
@@ -85,32 +75,7 @@ export class MainView extends React.Component {
     const { movies, user } = this.state;
 
 
-    // if (registered) {
-    //   return (
-    //     <RegistrationView
-    //       onRegistration={(register) => this.onRegistration(register)}
-    //     />
-    //   );
-    // }
-
-    // if (!user) return <Row>
-    //   <Col>
-    //     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-    //   </Col>
-    // </Row>
-    //   return (
-    //     <LoginView
-    //       onLoggedIn={(user) => this.onLoggedIn(user)}
-    //       onRegistration={(register) => this.onRegistration(register)}
-    //     />
-    //   );
-    // }
-
-
-    // if (movies.length === 0) return <div className="main-view" />;
-
-
-    
+   
     return (
       <Router>
         <NavbarView user={user} />
