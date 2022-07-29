@@ -31,7 +31,7 @@ export function ProfileView({ movies }) {
       .then((response) => {
         setUsername(response.data.Username);
         setEmail(response.data.Email);
-        // setFavouriteMovies(response.data.FavouriteMovies);
+        setFavouriteMovies(response.data.FavouriteMovies);
         console.log(response);
 
       }) 
