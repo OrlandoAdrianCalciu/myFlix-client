@@ -1,4 +1,12 @@
 $color: steelblue;
+$backgroundColor: #333333;
+$fontColor: #e0dede;
+
+
+* {
+    background-color: $backgroundColor;
+    color: $fontColor
+}
 
 .my-flix{
     color: $color;
