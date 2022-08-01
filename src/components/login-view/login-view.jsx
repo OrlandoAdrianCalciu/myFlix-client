@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import './login-view.scss';
 
 
 export function LoginView(props) {
@@ -55,7 +56,7 @@ export function LoginView(props) {
 
     return (
         <Form>
-            <Form.Group controlId="formUsername">
+            <Form.Group controlId="formUsername" className='form'>
                 <Form.Label>Username:</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" onChange={e => setUsername(e.target.value)} required />
                 {/* code added here to display validation error */}
@@ -68,7 +69,8 @@ export function LoginView(props) {
                 {/*code added here to display validation error*/}
                 {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
-            <Button variant="secondary" type="submit" onClick={handleSubmit}>
+            <br></br>
+            <Button variant='warning' type="submit" onClick={handleSubmit} className='button'>
                 Submit
             </Button>
         </Form>
