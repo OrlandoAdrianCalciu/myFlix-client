@@ -70,9 +70,10 @@ export function LoginView(props) {
                 {passwordErr && <p>{passwordErr}</p>}
             </Form.Group>
             <br></br>
-            <Button variant='warning' type="submit" onClick={handleSubmit} className='button'>
+            <Button variant='warning' type="submit" onClick={handleSubmit} className="button">
                 Submit
             </Button>
+            
         </Form>
         
     );
