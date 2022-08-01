@@ -1,4 +1,6 @@
 $navbarColor: #3e4153;
+$backgroundColor: #4d4240;
+$fontColor: #e0dede;
 
 
 .main-nav{
@@ -24,4 +26,17 @@ $navbarColor: #3e4153;
 .navbar-logo{
     background-color: #3e4153 !important;
 
+}
+
+.navbar-buttons{
+    color: $fontColor !important;
+}
+
+.navbar-buttons-user{
+    text-align: center;
+    color: $fontColor !important;
+}
+
+.navbar-buttons-logout{
+    color: #ffc107 !important;
 }
