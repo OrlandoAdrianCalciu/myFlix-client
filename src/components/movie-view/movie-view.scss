@@ -7,7 +7,13 @@
 }
 
 .movie-title{
+    margin-top: 10px;
+    text-align: center;
     text-transform: uppercase;
+}
+
+.text-style{
+    text-align: center;
 }
 
 
@@ -16,4 +22,34 @@
     font-style: italic;
     width: 35%;
     height: 40px;
+}
+
+.fav-buttons{
+    text-align: center;
+    transform: translate(5px);
+    padding-right: 12px !important;
+    padding-left: 15px !important;
+    margin-left: 10px;
+}
+
+.button-back{
+    margin-left: 45%;
+    margin-top: 20px;
+}
+
+
+@media ( min-width: 991px ) {
+    .fav-buttons{
+        transform: translate(5px);
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+}
+
+@media ( min-width: 1200px) {
+    .fav-buttons{
+        transform: translate(75px);
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
 }

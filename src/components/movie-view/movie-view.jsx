@@ -67,24 +67,27 @@ export class MovieView extends React.Component {
               <Card.Text className='text-style'>{movie.Description}</Card.Text>
 
               <Card.Text className='text-style'>Genre: {movie.Genre.Name}
+              <br></br>
               <Link to={`/genres/${movie.Genre.Name}`}>
                 <Button variant='link'>read more</Button>
               </Link>
               </Card.Text>
 
               <Card.Text className='text-style'>Director: {movie.Director.Name}
+              <br></br>
               <Link to={`/directors/${movie.Director.Name}`}>
                 <Button variant='link'>read more</Button>
               </Link>
               </Card.Text>
 
-              <Button variant='outline-danger' onClick={() => { onBackClick() }}>Back</Button>
-              <Button variant='outline-warning' className="button ml-2" onClick={() => { this.addMovie(movie, user);}}>
+              <Button variant='outline-warning' className="fav-buttons" onClick={() => { this.addMovie(movie, user);}}>
           Add to favourites
         </Button>
-        <Button variant='outline-warning' className="button ml-2" onClick={() => { this.delMovie(movie, user);}}>
+        <Button variant='outline-warning' className="fav-buttons" onClick={() => { this.delMovie(movie, user);}}>
           Delete from favourites
         </Button>
+        <br></br>
+        <Button className='button-back' variant='outline-danger' onClick={() => { onBackClick() }}>Back</Button>
 
             </Card.Body>
           </Card>
