@@ -1,0 +1,84 @@
+.form {
+  color: #e0dede;
+}
+
+.button {
+  color: #b6bf09;
+}
+.card-view {
+  background-color: black;
+}
+
+.card-view * {
+  background-color: black;
+}
+
+.movie-title {
+  text-transform: uppercase;
+}
+
+.button {
+  padding: 56px;
+  font-style: italic;
+  width: 35%;
+  height: 40px;
+}
+.main-nav {
+  background-color: #3e4153 !important;
+}
+
+.navbar-container {
+  background-color: #3e4153 !important;
+}
+
+.ml-auto {
+  background-color: #3e4153 !important;
+}
+
+#navbar-middle {
+  background-color: #3e4153 !important;
+}
+
+#responsive-navbar-nav {
+  background-color: #3e4153 !important;
+}
+
+.navbar-logo {
+  background-color: #3e4153 !important;
+}
+.fav-movie {
+  margin-bottom: 15px;
+}
+.fav-movie figure {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  width: 100%;
+}
+.fav-movie figure img {
+  display: block;
+  height: 400px;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+}
+.fav-movie button {
+  display: block;
+  margin: auto;
+}
+
+.card {
+  margin-bottom: 15px;
+}
+* {
+  background-color: #333333;
+  color: #e0dede;
+}
+
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.1d334ea1.css.map */
