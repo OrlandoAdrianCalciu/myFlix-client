@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Button, Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import "./movie-view.scss"
+
 export class MovieView extends React.Component {
 
   addMovie(movie, user) {
@@ -57,8 +59,8 @@ export class MovieView extends React.Component {
       <Container>
         <Row>
           <Col>
-          <Card className='movie-view'>
-            <Card.Body>
+          <Card className='movie-view' >
+            <Card.Body className='card-view'>
               <Card.Img className='movie-poster' src={movie.ImagePath} />
               <Card.Title className='movie-title'>{movie.Title}</Card.Title>
 
@@ -77,10 +79,10 @@ export class MovieView extends React.Component {
               </Card.Text>
 
               <Button variant='outline-danger' onClick={() => { onBackClick() }}>Back</Button>
-              <Button className="button ml-2" onClick={() => { this.addMovie(movie, user);}}>
+              <Button variant='outline-warning' className="button ml-2" onClick={() => { this.addMovie(movie, user);}}>
           Add to favourites
         </Button>
-        <Button className="button ml-2" onClick={() => { this.delMovie(movie, user);}}>
+        <Button variant='outline-warning' className="button ml-2" onClick={() => { this.delMovie(movie, user);}}>
           Delete from favourites
         </Button>
 
