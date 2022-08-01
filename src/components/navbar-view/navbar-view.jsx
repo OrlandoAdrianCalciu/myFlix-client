@@ -1,6 +1,6 @@
-
 import React from "react";
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import "./navbar-view.scss"
 
 export function NavbarView({user}) {
 
@@ -21,10 +21,10 @@ export function NavbarView({user}) {
   };
 
   return (
-    <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
-      <Container>
+    <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" >
+      <Container className="navbar-container">
         <Navbar.Brand className="navbar-logo" href="/">MyFlix-client</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" id="navbar-middle" />
         <Navbar.Collapse id="responsive-navbar-nav">
 
           <Nav className="ml-auto">
