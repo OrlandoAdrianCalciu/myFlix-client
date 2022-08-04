@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 
 import MoviesList from '../movies-list/movies-list';
 import { RegistrationView } from '../registration-view/registration-view';
-import { LoginView } from '../login-view/login-view';
+import LoginView from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { NavbarView }  from '../navbar-view/navbar-view';
@@ -76,6 +76,7 @@ export class MainView extends React.Component {
   render() {
     let { movies } = this.props;
     let { user } = this.state;
+    let localUser = localStorage.getItem('user');
 
 
    
@@ -156,12 +157,16 @@ export class MainView extends React.Component {
       //     )
       //   }
       // </div>
+      
     );
   }
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { 
+    movies: state.movies,
+  user: state.user
+  }
 }
 
 export default connect(mapStateToProps, { setMovies } )(MainView);
