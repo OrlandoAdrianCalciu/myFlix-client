@@ -1,3 +1,145 @@
+.form {
+  color: #e0dede;
+}
+.card-view {
+  background-color: black;
+}
+
+.card-view * {
+  background-color: black;
+}
+
+.movie-title {
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.text-style {
+  text-align: center;
+}
+
+.button {
+  padding: 56px;
+  font-style: italic;
+  width: 35%;
+  height: 40px;
+}
+
+.fav-buttons {
+  text-align: center;
+  transform: translate(5px);
+  padding-right: 12px !important;
+  padding-left: 15px !important;
+  margin-left: 10px;
+}
+
+.button-back {
+  margin-left: 45%;
+  margin-top: 20px;
+}
+
+@media (min-width: 991px) {
+  .fav-buttons {
+    transform: translate(5px);
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .fav-buttons {
+    transform: translate(75px);
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+}
+.main-nav {
+  background-color: #3e4153 !important;
+}
+
+.navbar-container {
+  background-color: #3e4153 !important;
+}
+
+.ml-auto {
+  background-color: #3e4153 !important;
+}
+
+#navbar-middle {
+  background-color: #3e4153 !important;
+}
+
+#responsive-navbar-nav {
+  background-color: #3e4153 !important;
+}
+
+.navbar-logo {
+  background-color: #3e4153 !important;
+}
+
+.navbar-buttons {
+  color: #e0dede !important;
+}
+
+.navbar-buttons-user {
+  text-align: center;
+  color: #e0dede !important;
+}
+
+.navbar-buttons-logout {
+  color: #ffc107 !important;
+}
+.card {
+  min-height: 200px !important;
+  border: solid white !important;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 14px !important;
+}
+
+.open-button {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  margin-left: 75px;
+}
+.fav-movie {
+  margin-bottom: 15px;
+}
+.fav-movie figure {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  width: 100%;
+}
+.fav-movie figure img {
+  display: block;
+  height: 400px;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+}
+.fav-movie button {
+  display: block;
+  margin: auto;
+}
+
+.card {
+  margin-bottom: 15px;
+}
+* {
+  background-color: #333333;
+  color: #e0dede;
+}
 
 .my-flix {
   color: steelblue;

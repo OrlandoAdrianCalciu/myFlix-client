@@ -25344,7 +25344,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","../login-view/login-view":"054li","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"5wspH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fxwA3"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","../login-view/login-view":"054li","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"5wspH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fxwA3","../movie-card/movie-card":"6EiBJ"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -28780,7 +28780,134 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"gnDJT"}],"6EiBJ":[function(require,module,exports) {
+},{"react-refresh/runtime":"gnDJT"}],"ikZdr":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$3741 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3741.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView
+);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieView extends _reactDefault.default.Component {
+    keypressCallback(event) {
+        console.log(event.key);
+    }
+    componentDidMount() {
+        document.addEventListener('keypress', this.keypressCallback);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('keypress', this.keypressCallback);
+    }
+    render() {
+        const { movie , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+            className: "movie-view",
+            __source: {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 21
+            },
+            __self: this,
+            children: [
+                /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                    className: "movie-poster",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 22
+                    },
+                    __self: this,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
+                        src: movie.ImagePath,
+                        __source: {
+                            fileName: "src/components/movie-view/movie-view.jsx",
+                            lineNumber: 23
+                        },
+                        __self: this
+                    })
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-title",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 25
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 26
+                            },
+                            __self: this,
+                            children: "Title: "
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 27
+                            },
+                            __self: this,
+                            children: movie.Title
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-description",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 29
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 30
+                            },
+                            __self: this,
+                            children: "Description: "
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 31
+                            },
+                            __self: this,
+                            children: movie.Description
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                    onClick: ()=>{
+                        onBackClick(null);
+                    },
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 33
+                    },
+                    __self: this,
+                    children: "Back"
+                })
+            ]
+        }));
+    }
+}
+
+  $parcel$ReactRefreshHelpers$3741.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"5wspH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fxwA3"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29578,133 +29705,6 @@ printWarning = function(text) {
 };
 module.exports = checkPropTypes;
 
-},{"./lib/ReactPropTypesSecret":"lYuBM","./lib/has":"9e9z2"}],"ikZdr":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$3741 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$3741.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MovieView", ()=>MovieView
-);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-class MovieView extends _reactDefault.default.Component {
-    keypressCallback(event) {
-        console.log(event.key);
-    }
-    componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback);
-    }
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-    }
-    render() {
-        const { movie , onBackClick  } = this.props;
-        return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-            className: "movie-view",
-            __source: {
-                fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 21
-            },
-            __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                    className: "movie-poster",
-                    __source: {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 22
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
-                        src: movie.ImagePath,
-                        __source: {
-                            fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 23
-                        },
-                        __self: this
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
-                    className: "movie-title",
-                    __source: {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 25
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                            className: "label",
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 26
-                            },
-                            __self: this,
-                            children: "Title: "
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                            className: "value",
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 27
-                            },
-                            __self: this,
-                            children: movie.Title
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
-                    className: "movie-description",
-                    __source: {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 29
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                            className: "label",
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 30
-                            },
-                            __self: this,
-                            children: "Description: "
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                            className: "value",
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 31
-                            },
-                            __self: this,
-                            children: movie.Description
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                    onClick: ()=>{
-                        onBackClick(null);
-                    },
-                    __source: {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 33
-                    },
-                    __self: this,
-                    children: "Back"
-                })
-            ]
-        }));
-    }
-}
-
-  $parcel$ReactRefreshHelpers$3741.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"5wspH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"fxwA3"}],"jUTZ8":[function() {},{}]},["fjPUJ","gnvLQ","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"./lib/ReactPropTypesSecret":"lYuBM","./lib/has":"9e9z2"}],"jUTZ8":[function() {},{}]},["fjPUJ","gnvLQ","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
