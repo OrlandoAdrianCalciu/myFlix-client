@@ -53,6 +53,26 @@
     padding-right: 50px !important;
   }
 }
+.card {
+  min-height: 200px !important;
+  border: solid white !important;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 14px !important;
+}
+
+.open-button {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  margin-left: 75px;
+}
 .main-nav {
   background-color: #3e4153 !important;
 }
@@ -88,26 +108,6 @@
 
 .navbar-buttons-logout {
   color: #ffc107 !important;
-}
-.card {
-  min-height: 200px !important;
-  border: solid white !important;
-}
-
-.card-title {
-  text-align: center;
-}
-
-.card-text {
-  text-align: center;
-  font-size: 14px !important;
-}
-
-.open-button {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 10px;
-  margin-left: 75px;
 }
 .fav-movie {
   margin-bottom: 15px;
