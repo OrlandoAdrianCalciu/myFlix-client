@@ -3,10 +3,12 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { setUser } from '../../actions/actions';
+import {connect} from 'react-redux';
 import './login-view.scss';
 
 
-export function LoginView(props) {
+function LoginView({user, setUser, onLoggedIn}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 //Declare hook for each input
@@ -45,7 +47,7 @@ export function LoginView(props) {
         })
         .then(response => {
           const data = response.data;
-          props.onLoggedIn(data);
+          onLoggedIn(data);
         })
         .catch(e => {
           console.log('no such user')
@@ -79,6 +81,12 @@ export function LoginView(props) {
     );
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
+}
+
 LoginView.propTypes = {
     user: PropTypes.shape({
         username: PropTypes.string.isRequired,
@@ -86,3 +94,5 @@ LoginView.propTypes = {
     }),
     onLoggedIn: PropTypes.func.isRequired
 }
+
+export default connect(mapStateToProps, { setUser })(LoginView);
