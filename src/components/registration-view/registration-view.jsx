@@ -66,13 +66,7 @@ export function RegistrationView(props) {
     };
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                <CardGroup>
-                    <Card>
-                        <Card.Body>
-                        <Card.Title>Please Register</Card.Title>
+                        // <Card.Title>Please Register</Card.Title>
                 <Form>
                         <Form.Group>
                             <Form.Label>Username:</Form.Label>
@@ -113,19 +107,15 @@ export function RegistrationView(props) {
                                 onChange={e => setBirthday(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
+                        <br></br>
                         <Button
-                            variant="primary"
+                        className="button"
+                            variant="warning"
                             type="submit"
                             onClick={handleSubmit}>
                             Register
                         </Button>
                     </Form>
-                    </Card.Body>
-                    </Card>
-                </CardGroup> 
-                </Col>
-            </Row>
-        </Container>
         // <form>
         //     <label>
         //         Username:
@@ -144,6 +134,6 @@ export function RegistrationView(props) {
         //         <input type='date' value={birthday} onChange={e => setBirthday(e.target.value)} />
         //     </label>
         //     <button type="submit" onClick={handleSubmit}>Register</button>
-        // </form>
+    // </form> 
     );
 }
