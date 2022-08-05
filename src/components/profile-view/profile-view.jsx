@@ -147,10 +147,10 @@ export function ProfileView({ movies }) {
           />
         </Form.Group>
       </Form>
-      <Button className="mt-2" onClick={handleUpdate}>
+      <Button variant="outline-danger" className="mt-2" onClick={handleUpdate}>
         Update your profile
       </Button>
-      <Button className="mt-2 ml-4" onClick={handleDelete}>
+      <Button variant="outline-danger" className="mt-2 ml-4" onClick={handleDelete}>
         Delete your profile
       </Button>
       <h4>Favourite movies:</h4>
