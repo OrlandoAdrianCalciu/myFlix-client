@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 
 import { setMovies, setUser } from '../../actions/actions';
 
@@ -53,7 +53,7 @@ export class MainView extends React.Component {
 
 
   onLoggedIn(authData) {
-    console.log(authData);
+    console.log(authData, 'authData');
     this.setState({
       user: authData.user.Username
     });
@@ -75,7 +75,7 @@ export class MainView extends React.Component {
 
   render() {
     let { movies } = this.props;
-    let { user } = this.state;
+    let { user } = this.props;
     let localUser = localStorage.getItem('user');
 
 
@@ -86,7 +86,7 @@ export class MainView extends React.Component {
         <Container>
         <Row className='main-view justify-content-md-center'>
           <Route exact path="/" render={() => {
-            if (!user) return <Col>
+            if (!localUser) return <Col>
             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (movies.length === 0) return <div className='main-view' />; 
@@ -98,7 +98,7 @@ export class MainView extends React.Component {
             return <MoviesList movies={movies} />
           }} />
           <Route path="/register" render={() => {
-            if(user) return <Redirect to="/"/>
+            if(localUser) return <Redirect to="/"/>
             return <Col lg={8} md={8}>
             <RegistrationView />
             </Col>
@@ -120,8 +120,8 @@ export class MainView extends React.Component {
               <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
             </Col>
           }} />
-          <Route path={`/users/${user}`} render={({match, history}) => {
-            if(!user) return <Redirect to="/" />
+          <Route path={`/users/${localUser}`} render={({match, history}) => {
+            if(!localUser) return <Redirect to="/" />
             return <Col>
             <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
             </Col>
@@ -165,7 +165,7 @@ export class MainView extends React.Component {
 let mapStateToProps = state => {
   return { 
     movies: state.movies,
-  user: state.user
+  user: state.user,
   }
 }
 
