@@ -20,6 +20,8 @@ export function NavbarView({user}) {
     }
   };
 
+  let localUser = localStorage.getItem('user');
+
   return (
     <Navbar className="main-nav" sticky="top" expand="lg" variant="dark" >
       <Container className="navbar-container">
@@ -29,7 +31,7 @@ export function NavbarView({user}) {
 
           <Nav className="ml-auto">
             {isAuth() && (
-              <Nav.Link className="navbar-buttons-user" href={`/users/${user}`}>{user}</Nav.Link>
+              <Nav.Link className="navbar-buttons-user" href={`/users/${localUser}`}>{localUser}</Nav.Link>
             )}
             {isAuth() && (
               <Button className="navbar-buttons-logout" variant="link" onClick={() =>  onLoggedOut() }>Logout</Button>
