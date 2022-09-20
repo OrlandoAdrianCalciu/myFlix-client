@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/OrlandoAdrianCalciu/myFlix-client#readme",
   "dependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
     "axios": "^0.27.2",
     "parcel": "^2.0.0-rc.0",
     "prop-types": "^15.8.1",
