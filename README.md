@@ -6,6 +6,6 @@
 
 This is a database Built App. The main point of the app is to display a database of movies and allow users to interact with them, by adding them to favorite list.
 
-##Links
+## Links
 
 Live Demo: [myFlix-client](https://myflix-client-react-orlando.netlify.app/)
